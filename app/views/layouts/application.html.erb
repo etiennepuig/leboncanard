@@ -1,15 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Leboncanard</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Leboncanard</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
+<header>
 
-  <body>
+</header>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="<%=root_path%>">Leboncanard</a>
+  <button class="navbar-toggler" type="button"  aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ">
+      <% if user_signed_in? %>
+        <a class="nav-item nav-link active" href="<%=edit_user_password_path%>"><%=current_user.username %><span class="sr-only">(current)</span></a>
+        <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: "nav-item nav-link active" %>
+      <%else %>
+        <a class="nav-item nav-link active" href="<%=user_session_path%>">Se connecter<span class="sr-only">(current)</span></a>
+      <%end %>
+    </div>
+  </div>
+</nav>
+  <% if flash[:notice] %>
+  <div class="alert alert-success" role="alert"><%= notice %></div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="alert alert-info" role="alert"><%= alert %></div>
+  <% end %>
+
+  <div class="container">
     <%= yield %>
-  </body>
+  </div>
+
+</body>
+<footer>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</footer>
 </html>
