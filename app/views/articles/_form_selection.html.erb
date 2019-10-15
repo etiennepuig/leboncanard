@@ -1,0 +1,17 @@
+<div class="formSelection">
+  <%= form_with model: @articles,url: articles_path, method: "get", class: "" do |f| %>
+    <div class="researchDiv">
+
+      <%= f.text_field :name, placeholder: "Que recherchez-vous?",value: "",class:'valueResearch' %>
+      <%= f.button  :submit,label:"recherche" ,class:'form-actions',class: 'buttonResearch'%>
+    </div>
+    <div class="parameterResearch">
+      <%= f.text_field :min_price,include_blank: false, placeholder: "prix minimum" %>
+      <%= f.text_field :max_price,include_blank: false, placeholder: "prix maximum" %>
+      <%= f.select :category_id, Category.all.collect {|p| [ p.name, p.id ] }, { include_blank: false } %>
+    </div>
+  <% end %>
+</div>
+
+
+

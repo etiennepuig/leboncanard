@@ -18,3 +18,34 @@
     color: black;
     text-decoration: none;
 }
+.formSelection{
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    background-color: #fff;
+    padding: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+}
+.buttonResearch{
+    background-color: #4183d7;
+    height: 30px;
+    border: 1px solid ;
+    color:white;
+    border-radius: 4px;
+    margin: auto 0;
+}
+.researchDiv{
+    display: flex;
+    flex-direction: row;
+}
+.valueResearch{
+    width: 70%;
+    margin: 10px;
+}
+.parameterResearch{
+    display: flex;
+    flex-direction: row;
+}
+.parameterResearch>*{
+    margin: 10px;
+}
